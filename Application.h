@@ -31,6 +31,7 @@ void Application::menu() {
     cout << "MOTORBIKE RENTAL SYSTEM" << endl;
     cout << "Name: Glizard" << endl;
     cout << "Date: 22-Oct-23" << endl;
+
 }
 
 
