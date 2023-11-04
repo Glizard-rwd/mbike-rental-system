@@ -44,6 +44,10 @@ void Admin::manageMember(MemberDB& memberDb) {
         case 3:
         case 4:
             cout << "Enter member ID: " << endl;
+            int memID;
+            cin >> memID;
+
+
         default:
     }
 }
