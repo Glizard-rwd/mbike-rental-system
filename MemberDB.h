@@ -23,7 +23,7 @@ public:
     void insertMember(Member& member);
     void deleteMember(Member& member);
     void updateMember(Member& member);
-    bool searchMember(Member& member);
+    vector<Member *> searchMember(const string& input, bool& found);
 
     vector<Member *> getMemberList() const {
         return memberList;
@@ -93,13 +93,10 @@ void MemberDB::writeMemberDB() {
     db.close();
 }
 
-bool MemberDB::searchMember(Member& member) {
-    for (auto & i : memberList) {
-        if (*i == member) {
-            return true;
-        }
-    }
-    return false; // Member not found
+
+vector<Member *> searchMember(const string& input, bool& found) {
+    // search member by id, name, and location
+    // return a list of members that match the input
 }
 
 void MemberDB::insertMember(Member &member) {
@@ -116,10 +113,6 @@ void MemberDB::deleteMember(Member &member) {
 }
 
 void MemberDB::updateMember(Member &member) {
-    if (!searchMember(member)) {
-        cout << "Member not found!" << endl;
-        return;
-    }
     cout << "Enter field to update:" << endl;
     cout << "1. Name" << endl;
     cout << "2. Location" << endl;
