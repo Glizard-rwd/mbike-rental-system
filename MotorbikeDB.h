@@ -112,6 +112,11 @@ void MotorbikeDB::updateMotorbike(Motorbike& motorbike) {
             motorbike.setMotorbikeDetail(motorbikeDetail);
             break;
         }
+
+        default: {
+            cout << "Invalid choice!" << endl;
+            break;
+        }
     }
 }
 
