@@ -123,6 +123,7 @@ void MemberDB::deleteMember(Member &member) {
             break;
         }
     }
+    writeMemberDB(); // update to file
 }
 
 void MemberDB::updateMember(Member &member) {
