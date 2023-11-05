@@ -94,13 +94,26 @@ void MemberDB::writeMemberDB() {
 }
 
 
-vector<Member *> searchMember(const string& input, bool& found) {
+vector<Member *> MemberDB::searchMember(const string& input, bool& found) {
     // search member by id, name, and location
     // return a list of members that match the input
+    vector<Member *> foundMembers;
+    for (Member* m: memberList) {
+        if (stoi(input) == m->getMemberID() || input == m->getFname() || input == m->getLocation()) {
+            foundMembers.push_back(m);
+            found = true; // found at least one member
+        }
+    }
+
+    if (foundMembers.empty()) {
+        found = false; // if not found any member
+    }
+    return foundMembers;
 }
 
 void MemberDB::insertMember(Member &member) {
     memberList.push_back(&member);
+    writeMemberDB(); // update to file
 }
 
 void MemberDB::deleteMember(Member &member) {
@@ -261,6 +274,7 @@ void MemberDB::updateMember(Member &member) {
                     string color;
                     getline(cin, color);
                     member.getOwnMbike().getMotorbikeDetail().setColor(color);
+                    break;
                 }
 
                 case 7: {
