@@ -13,7 +13,7 @@ public:
     void insertMotorbike(Motorbike& motorbike);
     void deleteMotorbike(Motorbike& motorbike);
     void updateMotorbike(Motorbike& motorbike);
-    bool searchMotorbike(Motorbike& motorbike);
+    vector<Motorbike *> searchMotorbike(const string& input, bool& found);
     void readMotorbikeDB();
     void writeMotorbikeDB();
     friend ostream& operator<<(ostream& os, const MotorbikeDB& motorbikeDB); // display to console
@@ -120,15 +120,6 @@ void MotorbikeDB::updateMotorbike(Motorbike& motorbike) {
     }
 }
 
-bool MotorbikeDB::searchMotorbike(Motorbike& motorbike) {
-    for (auto &i: motorbikeList)
-        if (*i == motorbike) {
-            return true;
-        }
-
-    return false;
-}
-
 void MotorbikeDB::readMotorbikeDB() {
     db.open("motorbikeDB.txt", ios::in);
     if (!db) {
@@ -176,4 +167,8 @@ istream &operator>>(istream &is, MotorbikeDB &motorbikeDB) {
     return is;
 }
 
+vector<Motorbike *> MotorbikeDB::searchMotorbike(const std::string &input, bool &found) {
+    vector<Motorbike *> foundMbikes;
+
+}
 #endif //MOTORBIKE_RENTAL_SYSTEM_MOTORBIKEDB_H
