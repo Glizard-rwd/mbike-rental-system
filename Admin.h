@@ -39,20 +39,69 @@ void Admin::manageMember(MemberDB& memberDb) {
         }
 
         case 2: {
+            // delete a member
+            cout << "Enter member id to delete: " << endl;
+            string id;
+            getline(cin, id);
+            bool isFound = false;
+            vector<Member *> results = memberDb.searchMember(id, isFound);
+            if (isFound) {
+                Member* memberToDelete = results[0]; // id is unique so there is only one result
+                memberDb.deleteMember(*memberToDelete);
+                cout << "Member delete successfully!";
+            } else {
+                cout << "Cannot find member with id " << id << " to delete!" << endl;
+            }
 
+            break;
         }
         case 3:
+        {
+            cout << "Enter member id to update: " << endl;
+            string id;
+            getline(cin, id);
+            bool isFound = false;
+            vector<Member *> results = memberDb.searchMember(id, isFound);
+            if (isFound) {
+                Member* memberToUpdate = results[0]; // id is unique so there is only one result
+                memberDb.updateMember(*memberToUpdate);
+                cout << "Member update successfully!";
+            } else {
+                cout << "Cannot find member with id " << id << " to update!" << endl;
+            }
+            // Update a member
+            break;
+        }
+
         case 4:
-            cout << "Enter member ID: " << endl;
-            int memID;
-            cin >> memID;
+        {
+            string input;
+            bool isFound = false;
+            cout << "Enter member info: " << endl;
+            getline(cin, input);
+            vector<Member *> foundMembers = memberDb.searchMember(input, isFound);
+            if (isFound) {
+                cout << "Found " << foundMembers.size() << " member(s): " << endl;
+                for (auto &foundMember: foundMembers) {
+                    cout << *foundMember << endl;
+                }
+            } else {
+                cout << "No member found!" << endl;
+            }
+            break;
+        }
 
-
-        default:
+        default: {
+            cout << "Invalid choice!" << endl;
+            break;
+        }
     }
 }
 
-void Admin::manageMotorbike(Motorbike& mBike);
+void Admin::manageMotorbike(MotorbikeDB &motorbikeDB) {
+
+}
+
 
 
 
