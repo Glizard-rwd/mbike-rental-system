@@ -46,11 +46,6 @@ void MotorbikeDB::deleteMotorbike(Motorbike& motorbike) {
 
 
 void MotorbikeDB::updateMotorbike(Motorbike& motorbike) {
-    if (!searchMotorbike(motorbike)) {
-        cout << "Motorbike not found!" << endl;
-        return;
-    }
-
     cout << "Enter field to update: " << endl;
     cout << "1. Motorbike ID" << endl;
     cout << "2. Price" << endl;
@@ -169,6 +164,18 @@ istream &operator>>(istream &is, MotorbikeDB &motorbikeDB) {
 
 vector<Motorbike *> MotorbikeDB::searchMotorbike(const std::string &input, bool &found) {
     vector<Motorbike *> foundMbikes;
+    for (Motorbike* mb: motorbikeList) {
+        if (stoi(input) == mb->getMbikeID() || input == mb->getLocation()) {
+            foundMbikes.push_back(mb);
+            found = true;
+        }
+    }
+
+    if (foundMbikes.empty()) {
+        found = false;
+    }
+
+    return foundMbikes;
 
 }
 #endif //MOTORBIKE_RENTAL_SYSTEM_MOTORBIKEDB_H

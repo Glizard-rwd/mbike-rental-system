@@ -238,6 +238,7 @@ void Member::rate(const Motorbike &mt) {
 }
 
 
+
 void Member::topUpCredit(int cr) {
     this->credit += cr;
 
@@ -285,6 +286,8 @@ istream &operator>>(istream &is, Member &mem) {
 bool Member::operator==(const Member &mem) const {
     return (memberID == mem.memberID && credit == mem.credit && ownMbike == mem.ownMbike);
 }
+
+
 
 
 
