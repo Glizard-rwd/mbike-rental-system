@@ -37,6 +37,25 @@ void Application::menu() {
 
 void Application::option() {
     cout << "Use the app as 1.Guest 2.Member 3.Admin: " << endl;
+    int choice;
+    cin >> choice;
+//    switch (choice) {
+//        // choice should replace by enum
+//        case 1: {
+//            guestOption();
+//            break;
+//        }
+//        case 2: {
+//            memberOption();
+//            break;
+//        }
+//        case 3: {
+//            adminOption();
+//            break;
+//        }
+//
+//    }
+
 }
 
 
